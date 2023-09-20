@@ -1,0 +1,38 @@
+syntax="proto3";
+
+package grpc;
+
+
+service ChatService{
+    rpc Register(RegisterRequest) returns (RegisterResponse);
+    rpc GetParticipants(GetParticipantsRequest) returns (GetParticipantsResponse);
+    rpc CreateRoom(CreateRoomRequest) returns (CreateRoomResponse);
+}
+
+message RegisterResponse{
+    string state_message = 1;
+}
+
+message RegisterRequest {
+    string user_id = 1;
+    string tinode_id = 2;
+}
+
+message GetParticipantsRequest {
+    string order_id = 1;
+}
+
+message GetParticipantsResponse{
+    string call_room_id = 1;
+    string chat_room_id = 2;
+}
+
+message CreateRoomRequest{
+    string order_id = 1;
+    string customer_id = 2;
+    string driver_id = 3;
+}
+
+message CreateRoomResponse{
+    string state_message = 1;
+}
